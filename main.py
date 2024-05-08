@@ -95,7 +95,7 @@ class ListOrganizer:
 
     def save_lists(self):
         with open(self.filename, "w") as data:
-            json.dump(self.lists, data)
+            json.dump(self.lists, data, indent=4, ensure_ascii=False)
 
     def load_lists(self):
         with open(self.filename, "r") as data:
