@@ -1,29 +1,23 @@
 {
-    "random": [
+    "Fruits": [
         {
-            "price": 2.99,
-            "name": "apples",
+            "price": 3.99,
+            "name": "Bananas",
             "store": "Costco",
+            "limits": "Limit 3"
+        },
+        {
+            "price": 6.99,
+            "name": "Strawberries",
+            "store": "Fredmeyer",
             "limits": "N/A"
         },
         {
-            "price": 2.0,
-            "name": "nuts",
+            "price": 9.99,
+            "name": "Coconut",
             "store": "N/A",
-            "limits": "Limit 2"
-        },
-        {
-            "price": 210.99,
-            "name": "cat",
-            "store": "Petco",
-            "limits": "Limit 2"
-        },
-        {
-            "price": 1.99,
-            "name": "bag",
-            "store": "Winco",
-            "limits": "2"
+            "limits": "N/A"
         }
     ],
-    "Fruits": []
+    "Toys": []
 }
