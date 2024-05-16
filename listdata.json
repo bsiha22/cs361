@@ -19,5 +19,12 @@
             "limits": "N/A"
         }
     ],
-    "Toys": []
+    "Legos": [
+        {
+            "price": 59.99,
+            "name": "Legos",
+            "store": "Lego Store",
+            "limits": "N/A"
+        }
+    ]
 }

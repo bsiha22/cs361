@@ -58,7 +58,7 @@ class ListOrganizer:
 
     def rename_list(self, old_name):
         if old_name in self.lists:
-            newname = input("Enter a new name for this list:")
+            newname = input("Enter a new name for this list: ")
             confirm = input("Enter 'confirm' to rename or 'cancel' to return to the home page: ")
             if confirm == 'cancel':
                 return
@@ -139,7 +139,7 @@ class ListOrganizer:
     def tutorial(self):
         print("This app's main feature is creation and management of lists.")
         time.sleep(2)
-        print("There are 4 main features that come with this: Creating lists, adding items to lists,")
+        print("There are 4 features that come with this: Creating lists, adding items to lists,")
         time.sleep(2)
         print("deleting lists and items, and renaming lists.")
         time.sleep(2)
