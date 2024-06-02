@@ -1,5 +1,6 @@
 import json
 import time
+import zmq
 
 class ListOrganizer:
     def __init__(self):
@@ -56,6 +57,16 @@ class ListOrganizer:
             print(f"List '{list_name}' not found.")
             time.sleep(1)
 
+    def rename_item(self, list_name):
+            context = zmq.Context()
+            socket = context.socket(zmq.REQ)
+            socket.connect("tcp://localhost:5555")
+            oldname = input("Enter the old name to be changed: ")
+            newname = input("Enter the new name: ")
+            socket.send_string(f'rename,{list_name},{oldname},{newname}')
+            response = socket.recv_string()
+            print(response)
+
     def rename_list(self, old_name):
         if old_name in self.lists:
             newname = input("Enter a new name for this list: ")
@@ -102,6 +113,8 @@ class ListOrganizer:
                     self.add_item(list_name)
                 elif next == "delete":
                     self.remove_item(list_name)
+                elif next == "rename":
+                    self.rename_item(list_name)
         else:
             print(f"List '{list_name}' not found.")
             time.sleep(1)
@@ -166,6 +179,9 @@ class Item:
 
 def main():
     organizer = ListOrganizer()
+    context = zmq.Context()
+    socket = context.socket(zmq.REQ)
+    socket.connect("tcp://localhost:5555")
     print("Welcome to List Organizer")
     time.sleep(1)
     print("This program allows you to create shopping lists that help you stay organized.")
