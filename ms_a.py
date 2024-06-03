@@ -18,8 +18,8 @@ def server(file_path):
     socket = context.socket(zmq.REP)
     socket.bind("tcp://*:5555")
 
-    data = load_data(file_path)
     while True:
+        data = load_data(file_path)
         response = None
         request = socket.recv_string()
         request_parts = request.split(',')

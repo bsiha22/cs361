@@ -67,6 +67,15 @@ class ListOrganizer:
             response = socket.recv_string()
             print(response)
 
+    def sort_list(self, list_name, key):
+            context = zmq.Context()
+            socket = context.socket(zmq.REQ)
+            socket.connect("tcp://localhost:6666")
+            socket.send_string(f'{key},{list_name}')
+            response = socket.recv_string()
+            print(response)
+
+
     def rename_list(self, old_name):
         if old_name in self.lists:
             newname = input("Enter a new name for this list: ")
@@ -107,14 +116,23 @@ class ListOrganizer:
                 for item in self.lists[list_name]:
                     print("-", Item(**item))
                 
-                next = input("\nEnter 'add' or 'delete' to add/delete an item from this list, \n"
-                      "Enter anything else to return to the home page: ")
-                if next == "add":
+                time.sleep(1)
+                next = input("\nEnter 1 to add an item to this list,\n" 
+                             "2 to delete an item from this list, \n"
+                      "3 to rename an item in this list, \n" 
+                      "4 to sort this list by name, \n"
+                      "5 to sort this list by price,\n"
+                      "or anything else to return to the home page: ")
+                if next == "1":
                     self.add_item(list_name)
-                elif next == "delete":
+                elif next == "2":
                     self.remove_item(list_name)
-                elif next == "rename":
+                elif next == "3":
                     self.rename_item(list_name)
+                elif next == "4":
+                    self.sort_list(list_name, 'name')
+                elif next == "5":
+                    self.sort_list(list_name, 'price')
         else:
             print(f"List '{list_name}' not found.")
             time.sleep(1)
@@ -201,6 +219,7 @@ def main():
         print("7. View all lists")
         print("8. Tutorial")
         print("9. Exit")
+        organizer.load_lists()
 
         choice = input("Enter your choice: ")
 
