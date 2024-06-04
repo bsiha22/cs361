@@ -29,7 +29,7 @@ def server(filename):
             response = (f'{messages[1]} was sorted by name.')
 
         elif messages[0] == "price":
-            sortlist = sorted(data[messages[1]], key=lambda item: item['price'])
+            sortlist = sorted(data[messages[1]], key=lambda item: item['price'], reverse=True)
             data[messages[1]] = sortlist
             save_data(filename, data)
             response = (f'{messages[1]} was sorted by price.')

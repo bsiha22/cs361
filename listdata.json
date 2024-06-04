@@ -1,10 +1,10 @@
 {
     "Fruits": [
         {
-            "price": 3.99,
-            "name": "Bananas",
-            "store": "Costco",
-            "limits": "Limit 3"
+            "price": 9.99,
+            "name": "Coconut",
+            "store": "N/A",
+            "limits": "N/A"
         },
         {
             "price": 6.99,
@@ -13,16 +13,22 @@
             "limits": "N/A"
         },
         {
-            "price": 9.99,
-            "name": "Coconut",
-            "store": "N/A",
-            "limits": "N/A"
+            "price": 3.99,
+            "name": "Bananas",
+            "store": "Costco",
+            "limits": "Limit 3"
         }
     ],
     "Legos": [
         {
             "price": 59.99,
-            "name": "Star Wars",
+            "name": "Legos",
+            "store": "Lego Store",
+            "limits": "N/A"
+        },
+        {
+            "price": 129.99,
+            "name": "Death Star",
             "store": "Lego Store",
             "limits": "N/A"
         }

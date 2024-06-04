@@ -18,9 +18,9 @@ def namesearch(filename):
     socket.bind("tcp://*:3333")
 
     while True:
-        data = load_data(filename)
 
         message = socket.recv_string()
+        data = load_data(filename)
         name = message.strip()
         found = []
 
@@ -30,7 +30,6 @@ def namesearch(filename):
                     found.append((lists, item))
                     break
 
-        print(found)
         if found:
             info = [f"{name} was found in the following lists:"]
             for lists, item in found:
@@ -43,6 +42,7 @@ def namesearch(filename):
         else:
             response = f"{name} wasn't found in any of your lists."
 
+        print("Response was sent.")
         socket.send_string(response)
 
 
