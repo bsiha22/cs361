@@ -26,5 +26,25 @@
             "store": "Lego Store",
             "limits": "N/A"
         }
+    ],
+    "Smoothie": [
+        {
+            "price": 3.99,
+            "name": "Bananas",
+            "store": "Costco",
+            "limits": "Limit 3"
+        },
+        {
+            "price": 5.99,
+            "name": "Milk",
+            "store": "Fredmeyer",
+            "limits": "N/A"
+        },
+        {
+            "price": 2.99,
+            "name": "Spinach",
+            "store": "Walmart",
+            "limits": "N/A"
+        }
     ]
 }

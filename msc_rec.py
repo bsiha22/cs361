@@ -10,15 +10,28 @@ def recs():
         message = socket.recv_string()
         response = None
 
-        if message == 'fruits':
-            response = "Commonly bought fruits are: Apples, Avocados, Bananas, Grapes, Oranges, and Strawberries."
+        if message == '1':
+            response = "Commonly bought fruits: Apples, Avocados, Bananas, Grapes, Oranges, and Strawberries."
 
-        if message == 'vegetables':
-            response = "Commonly bought vegetables are: Carrots, Kale, Lettuce, Mushrooms, Potatos, and Tomatoes."
+        elif message == '2':
+            response = "Commonly bought vegetables: Carrots, Kale, Lettuce, Mushrooms, Potatos, and Tomatoes."
         
-        if message == 'household':
-            response = "Common household items are: Hand Soap, Lotion, Paper Towels, Tissues, Toilet Paper and Water."
+        elif message == '4':
+            response = "Common household items: Hand Soap, Lotion, Paper Towels, Tissues, Toilet Paper and Trash Bags"
 
-        if message == 'smoothie':
+        elif message == '5':
             response = "Common smoothie addins: Bananas, Frozen Berries, Milk, Peanut Butter, Protein Powder, and Yogurt."
+
+        elif message == '3':
+            response = "Popular Sweets: Brownies, Cakes, Cookies, Donuts, Ice Cream, and Pies."
+
+        if response is None:
+            response = 'Invalid entry.'
+
+        print(response)
+        socket.send_string(response)
+
+
+if __name__ == "__main__":
+    recs()
 

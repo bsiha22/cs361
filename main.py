@@ -67,6 +67,40 @@ class ListOrganizer:
             response = socket.recv_string()
             print(response)
 
+    def search_items(self):
+        context = zmq.Context()
+        socket = context.socket(zmq.REQ)
+        socket.connect("tcp://localhost:3333")
+
+        item = input("Enter the name of the item you want to search: ")
+        socket.send_string(item)
+        response = socket.recv_string()
+        print()
+        print(response)
+        print()
+        input("Enter anything to continue: ")
+
+    def recommend(self):
+        rec = input("Enter 1 for fruit,\n"
+                    "2 for vegetables,\n"
+                    "3 for sweets,\n"
+                    "4 for household items,\n"
+                    "or 5 for smoothie ingredients.\n"
+                    "Enter anything else to return: ")
+        if rec in ("1", "2", "3", "4", "5"):
+            context = zmq.Context()
+            socket = context.socket(zmq.REQ)
+            socket.connect("tcp://localhost:4444")
+            socket.send_string(rec)
+            response = socket.recv_string()
+            print()
+            print(response)
+            print()
+            input("Enter anything to continue: ")
+        else:
+            print("Returning...")
+            time.sleep(1)
+
     def sort_list(self, list_name, key):
             context = zmq.Context()
             socket = context.socket(zmq.REQ)
@@ -217,8 +251,10 @@ def main():
         print("5. Delete a list")
         print("6. View a list's contents")
         print("7. View all lists")
-        print("8. Tutorial")
-        print("9. Exit")
+        print("8. Search lists by item name")
+        print("9. Get Grocery Recommendations")
+        print("0. Tutorial")
+        print("Enter anything else to exit.")
         organizer.load_lists()
 
         choice = input("Enter your choice: ")
@@ -248,13 +284,14 @@ def main():
         elif choice == "7":
             organizer.display_lists()
         elif choice == "8":
-            organizer.tutorial()
+            organizer.search_items()
         elif choice == "9":
+            organizer.recommend()
+        elif choice == "0":
+            organizer.tutorial()
+        else:
             print("Exiting the program.")
             break
-        else:
-            print("Invalid choice. Please enter a valid option.")
-
 
 if __name__ == "__main__":
     main()
